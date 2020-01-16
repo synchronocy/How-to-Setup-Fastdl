@@ -51,9 +51,9 @@ end
 
 - Knowing this information about compression, quota usage and other parent 'content-pushers' we can take that information and also advise ourselves on the possiblities that you could run into.
 
-  -`Bandwidth(quota) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )`
+  - Bandwidth ( quota ) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )
   
-  -`Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc) you'll see the referring header hl2://your.server.ip.address you can deny anyone with a mismatching referer header which effectively kills almost everyone attempting to use your fastdl server.`
+  - Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc), You'll see the referring header or user-agent i've forgotten which is inside the log file, the format should go something along these lines `[HH:MM:SS:] some.other.ip.address, Valve/Steam HTTP Client 1.0 (4000), hl2://your.server.ip.address` you can deny anyone with a mismatching referer/useragent header which effectively kills almost everyone attempting to use your fastdl server.
   
  
 
