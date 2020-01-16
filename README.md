@@ -1,6 +1,8 @@
 ## How to Setup FastDL in Garry's Mod
 
 
+
+
 ## Introduction
 
 In this document should give you a general concept on how `FastDL` works and any bugs you may encounter along side other underlying child 'content-pushers'.
@@ -12,7 +14,7 @@ A lot of documentation for it is usually shrouded by WorkshopDL hence why it may
 
 ## FastDL vs. WorkshopDL / ServerDL
 
-### General concept a head I'm not spoon feeding, instead regurgitating information.
+### General concept ahead I'm not spoon feeding, instead regurgitating information.
 
 
 #### ServerDL
@@ -43,10 +45,17 @@ end
 
 #### FastDL
 
-- FastDL utilizes the HTTP protocol to push content to the clients externally using your own service, hence by using your own service there are no restrictions placed upon the client's transfer(download) rates instead of the 20kbps.
+- FastDL utilizes the HTTP protocol to push content to the clients externally using your own service(webhost), hence by using your own service there are no restrictions placed upon the client's transfer(download) rates instead of the 20kbps and if there are any restrictions it would be on your service - an average user would NOT exceed this restriction.
 
-- Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows–Wheeler algorithm which significantly reduces file sizes for comparison. A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times. the same map file but compressed using bzip2 almost halves the size of the map (16 MegaBytes) effectively 'halfing' loading times and quota you'll use pushing content.
+- FastDL can also support compressed files in the format bz2(Bzip2). Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows–Wheeler algorithm which significantly reduces file sizes for comparison. A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times. the same map file but compressed using bzip2 almost halves the size of the map (16 MegaBytes) effectively 'halfing' loading times and quota you'll use pushing content.
 
+- Knowing this information we can also be advised on the possiblities that could incur from lifting these restrictions.
+
+  - `Bandwidth(quota) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )`
+  
+  - `Stealing FastDL Content - is something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc) you'll see the referring header hl2://your.server.ip.address you can deny anyone with a mismatching referer header which effectively kills almost everyone attempting to use your fastdl server.`
+  
+ 
 
 
 - FastDL is rather tricky in terms of how it works, to cut a long story short. FastDL doesn't work like how Garry's mod parses addons
@@ -64,6 +73,7 @@ addons/
     -> materials/
     
 ```
+
 - As instead FastDL parses things in the main root directories that need to be downloaded.
 
 ```
@@ -71,15 +81,23 @@ addons/
 
 maps/
   -> gm_fastdl.bsp ( or gm_fastdl.bsp.bz2 )
+
 materials/
+  -> my_material.vtf
+  -> my_material2.vmt
 
 models/
+  -> etc
 
 sounds/
+  -> etc
 
 resource/
-
+  -> etc
 ```
+
+
+- _CONSTRUCTION PAST HERE_
 
 
 
