@@ -51,9 +51,9 @@ end
 
 - Knowing this information we can also be advised on the possiblities that could incur from lifting these restrictions.
 
-  - `Bandwidth(quota) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )`
+  -`Bandwidth(quota) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )`
   
-  - `Stealing FastDL Content - is something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc) you'll see the referring header hl2://your.server.ip.address you can deny anyone with a mismatching referer header which effectively kills almost everyone attempting to use your fastdl server.`
+  -`Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc) you'll see the referring header hl2://your.server.ip.address you can deny anyone with a mismatching referer header which effectively kills almost everyone attempting to use your fastdl server.`
   
  
 
