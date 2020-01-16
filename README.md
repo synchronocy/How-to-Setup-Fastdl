@@ -47,9 +47,9 @@ end
 
 - FastDL utilizes the HTTP protocol to push content to the clients externally using your own service(webhost), hence by using your own service there are no restrictions placed upon the client's transfer(download) rates instead of the 20kbps and if there are any restrictions it would be on your service - an average user would NOT exceed this restriction.
 
-- FastDL can also support compressed files in the format bz2(Bzip2). Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows–Wheeler algorithm which significantly reduces file sizes for comparison. A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times. the same map file but compressed using bzip2 almost halves the size of the map (16 MegaBytes) effectively 'halfing' loading times and quota you'll use pushing content.
+- FastDL can also support compressed files in the format bz2(Bzip2). Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows–Wheeler algorithm which significantly reduces file sizes; for comparison, A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times due to the download of the map. We take the same map file but compress it using bzip2, it almost halves the size of the map (16 MegaBytes) effectively 'halfing' loading times and quota you'll use pushing content.
 
-- Knowing this information we can also be advised on the possiblities that could incur from lifting these restrictions.
+- Knowing this information about compression, quota usage and other parent 'content-pushers' we can take that information and also advise ourselves on the possiblities that you could run into.
 
   -`Bandwidth(quota) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )`
   
