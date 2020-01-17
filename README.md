@@ -5,7 +5,7 @@
 
 ## Introduction
 
-In this document should give you a general concept on how `FastDL` works and any bugs you may encounter along side other underlying child 'content-pushers'.
+This document should give you a general concept on how `FastDL` works and any bugs you may encounter along side other underlying child 'content-pushers'.
 
 I've decided to write a general guide on how to setup `FastDL` for Garry's Mod since not many resources give any guidelines or information on how it is setup or ran. Due to other servers within the Oceanic region of the world dabbling in smoke and daggers in regards to information regarding it. From what I have seen it is more often than not 'flexing' on other smaller communities or individuals in order to 'trample' certain categories of the server ranking list.
 
@@ -57,7 +57,6 @@ end
   
  
 
-
 - FastDL is rather tricky in terms of how it works, to cut a long story short. FastDL doesn't work like how Garry's mod parses addons
 e.g 
 ```
@@ -95,6 +94,24 @@ sounds/
 resource/
   -> etc
 ```
+
+
+## Configuring FastDL
+
+
+#### Preparation 
+
+Depending on what type of server you're running you'll need to approach this setup in a different way, if you're on shared oversubscribed hosting ( this is where you buy a cheap hosting service that only gives you a panel and ftp where many people are put on the same machine you are on ), or you are running completely dedicated from someone who does instances e.g AWS, OVH, Vultr.
+
+#### Shared Host Scenario
+
+- If you are on shared hosting with a panel and don't have access to SSH on the machine then see solution below.
+
+
+
+
+
+
 
 
 - _CONSTRUCTION PAST HERE_
