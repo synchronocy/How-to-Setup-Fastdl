@@ -129,11 +129,18 @@ First steps, you'll need to get a webhost with decent bandwidth( quota ), I heav
 - Reason for allowing the indexing is because I have had issues with the client not being able to download files because the indexing was turned off. ( nginx & lighttpd also has this feature unless you explicitly turn it on)
 5.) Create the folder that apache will use by running `sudo mkdir /var/www/fastdl`, then reboot apache2 `sudo systemctl restart apache2` or `service restart apache2.service` .
 
-6.) Now we need to configure FTP(vsftpd), navigate to `/etc/
+6.) Now we need to configure FTP(vsftpd), edit the following file using this command `nano /etc/vsftpd.conf`, add the following lines to your config file
+```
+listen=NO
+listen_ipv6=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+local_umask=022
+```
+7.) Restart vsftpd `sudo systemctl restart vsftpd` or `service restart vsftpd.service`. then use your GUI or cli tool of choice to connect to the ftp server, upload your files that you want to be on your fastdl server. Once you're done uploading we can move onto the next step.
 
-
-
-
+8.) 
 
 
 - _CONSTRUCTION PAST HERE_
