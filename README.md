@@ -7,7 +7,7 @@
 
 This document should give you a general concept on how `FastDL` works and any bugs you may encounter along side other underlying child 'content-pushers'.
 
-I've decided to write a general guide on how to setup `FastDL` for Garry's Mod since not many resources give any guidelines or information on how it is setup or ran. Due to other servers within the Oceanic region of the world dabbling in smoke and daggers in regards to information regarding it. From what I have seen it is more often than not 'flexing' on other smaller communities or individuals in order to 'trample' certain categories of the server ranking list.
+I've decided to write a general guide on how to setup `FastDL` for Garry's Mod since not many resources give any guidelines or information on how it is setup or ran. Due to other servers within the Oceanic region of the world dabbling in smoke and daggers in regards to information regarding it. From what I have seen it is more often than not 'flexing' on other smaller communities or individuals in order to 'trample' other servers in certain categories of the server ranking list.
 
 A lot of documentation for it is usually shrouded by WorkshopDL hence why it may be hard to find documentation on this.
 
