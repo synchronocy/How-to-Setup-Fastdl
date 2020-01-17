@@ -111,7 +111,9 @@ Depending on what type of server you're running you'll need to approach this set
 First steps, you'll need to get a webhost with decent bandwidth( quota ), I heavily suggest using Amazon Web Services' (AWS) S3 bucket as they offer cheaper storage options with other bolt on services that can help the flexibility of your FastDL - but we'll go with a instance from OVH(VPS SSD 1, $4.99 per month) on Ubuntu 18.04.
 
 1.) We'll Login to our ovh instance and run an update and upgrade `sudo apt-get update && sudo apt-get upgrade`
+
 2.) Now we will install our web server package, in this scenario we will use apache, to install this `sudo apt-get install apache2` let that install, secondly we'll have to install ftp to get our files onto our instance to do this `sudo apt-get install vsftpd`
+
 3.) Once all of our packages are done we'll have to configure them, navigate to `/etc/apache2/sites-enabled` and using nano we'll edit edit our config `000-default.conf` 
   - something to also mention if you already have a website running on port 80 apache2 will spit the dummy and say that the binding port address is already in use, if you already have a website running on port 80 you can change the port that it will listen on in the following files `/etc/apache2/ports.conf` and `/etc/apache2/sites-enabled/000-default.conf`
   find and edit the following line `DocumentRoot` it's default should be /var/www/html/ we'll change this to `DocumentRoot /var/www/fastdl/`
