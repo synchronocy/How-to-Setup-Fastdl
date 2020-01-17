@@ -23,7 +23,7 @@ A lot of documentation for it is usually shrouded by WorkshopDL hence why it may
 
 #### WorkshopDL
 
-- WorkshopDL is typically combined with a workshop then accommodated with the commandline parameter +host_workshop_collection xxxxxx. This is using Valve's own CDN to push content to your clients via the workshop if they hadn't already subscribed to your content pack or your individual addons.
+- WorkshopDL is typically combined with a workshop collection then accommodated with the commandline parameter +host_workshop_collection xxxxxx. This is using Valve's own CDN to push content to your clients via the workshop if they hadn't already subscribed to your content pack or your individual addons.
 
 - WorkshopDL is configured by setting a file up located somewhere in autorun - typically in (lua/autorun/server), you would gather all of your workshop addon ID's and use the function `resource.AddWorkshop("xxxxxxx")`https://wiki.garrysmod.com/page/resource/AddWorkshop
 
