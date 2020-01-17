@@ -14,7 +14,7 @@ A lot of documentation for it is usually shrouded by WorkshopDL hence why it may
 
 ## FastDL vs. WorkshopDL / ServerDL
 
-### General concept ahead I'm not spoon feeding, instead regurgitating information.
+### General concept ahead this is purely me regurgitating information. Some of this may be incorrect but putting experience to text.
 
 
 #### ServerDL
