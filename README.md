@@ -115,6 +115,7 @@ First steps, you'll need to get a webhost with decent bandwidth( quota ), I heav
 3.) Once all of our packages are done we'll have to configure them, navigate to `/etc/apache2/sites-enabled` and using nano we'll edit edit our config `000-default.conf` 
   - something to also mention if you already have a website running on port 80 apache2 will spit the dummy and say that the binding port address is already in use, if you already have a website running on port 80 you can change the port that it will listen on in the following files `/etc/apache2/ports.conf` and `/etc/apache2/sites-enabled/000-default.conf`
   find and edit the following line `DocumentRoot` it's default should be /var/www/html/ we'll change this to `DocumentRoot /var/www/fastdl/`
+
 4.) Drop down the following few lines you will see `<Directory />` this permissions for the specified document root we defined above, make sure that your directory config looks something like this
 ```
 <Directory />
