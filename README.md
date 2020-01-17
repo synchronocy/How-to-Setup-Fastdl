@@ -126,9 +126,10 @@ First steps, you'll need to get a webhost with decent bandwidth( quota ), I heav
   Require all granted
 </Directory>
 ```
-- Reason for allowing the view is because I have had issues with the client not being able to download files because the indexing was turned off. ( nginx & lighttpd also has this feature unless you explicitly turn it on)
+- Reason for allowing the indexing is because I have had issues with the client not being able to download files because the indexing was turned off. ( nginx & lighttpd also has this feature unless you explicitly turn it on)
 5.) Create the folder that apache will use by running `sudo mkdir /var/www/fastdl`, then reboot apache2 `sudo systemctl restart apache2` or `service restart apache2.service` .
-6.) now we need to configure FTP(vsftpd), navigate to 
+
+6.) Now we need to configure FTP(vsftpd), navigate to `/etc/
 
 
 
