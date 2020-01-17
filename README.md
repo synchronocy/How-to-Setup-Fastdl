@@ -53,7 +53,7 @@ end
 
   - Bandwidth ( quota ) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )
   
-  - Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at YOUR expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc), You'll see the referring header or user-agent i've forgotten which is inside the log file, the format should go something along these lines `[HH:MM:SS:] some.other.ip.address, Valve/Steam HTTP Client 1.0 (4000), hl2://your.server.ip.address` you can deny anyone with a mismatching referer/useragent header which effectively kills almost everyone attempting to use your fastdl server.
+  - Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at **YOUR** expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc), You'll see the referring header or user-agent i've forgotten which is inside the log file, the format should go something along these lines `[HH:MM:SS:] some.other.ip.address, Valve/Steam HTTP Client 1.0 (4000), hl2://your.server.ip.address` you can deny anyone with a mismatching referer/useragent header which effectively kills almost everyone attempting to use your fastdl server.
   
  
 
@@ -73,7 +73,7 @@ addons/
     
 ```
 
-- As instead FastDL parses things in the main root directories that need to be downloaded.
+As instead FastDL parses things in the main root directories that need to be downloaded.
 
 ```
 -- FastDL File Structure
@@ -101,13 +101,31 @@ resource/
 
 #### Preparation 
 
-Depending on what type of server you're running you'll need to approach this setup in a different way, if you're on shared oversubscribed hosting ( this is where you buy a cheap hosting service that only gives you a panel and ftp where many people are put on the same machine you are on ), or you are running completely dedicated from someone who does instances e.g AWS, OVH, Vultr.
+Depending on what type of server you're running you'll need to approach this setup in a different way, if you're on shared oversubscribed hosting ( this is where you buy a cheap hosting service that only gives you a panel and ftp where many people are put on the same machine you are on making it very slow and overused), or you are running completely dedicated from a company who does instances e.g AWS, OVH, Vultr.
 
 #### Shared Host Scenario
 
 - If you are on shared hosting with a panel and don't have access to SSH on the machine then see solution below.
 
 
+First steps, you'll need to get a webhost with decent bandwidth( quota ), I heavily suggest using Amazon Web Services' (AWS) S3 bucket as they offer cheaper storage options with other bolt on services that can help the flexibility of your FastDL - but we'll go with a instance from OVH(VPS SSD 1, $4.99 per month) on Ubuntu 18.04.
+
+1.) We'll Login to our ovh instance and run an update and upgrade `sudo apt-get update && sudo apt-get upgrade`
+2.) Now we will install our web server package, in this scenario we will use apache, to install this `sudo apt-get install apache2` let that install, secondly we'll have to install ftp to get our files onto our instance to do this `sudo apt-get install vsftpd`
+3.) Once all of our packages are done we'll have to configure them, navigate to `/etc/apache2/sites-enabled` and using nano we'll edit edit our config `000-default.conf` 
+  - something to also mention if you already have a website running on port 80 apache2 will spit the dummy and say that the binding port address is already in use, if you already have a website running on port 80 you can change the port that it will listen on in the following files `/etc/apache2/ports.conf` and `/etc/apache2/sites-enabled/000-default.conf`
+  find and edit the following line `DocumentRoot` it's default should be /var/www/html/ we'll change this to `DocumentRoot /var/www/fastdl/`
+4.) Drop down the following few lines you will see `<Directory />` this permissions for the specified document root we defined above, make sure that your directory config looks something like this
+```
+<Directory />
+  Options Indexes FollowSymLinks MultiViews
+   AllowOverride All
+  Require all granted
+</Directory>
+```
+- Reason for allowing the view is because I have had issues with the client not being able to download files because the indexing was turned off. ( nginx & lighttpd also has this feature unless you explicitly turn it on)
+5.) Create the folder that apache will use by running `sudo mkdir /var/www/fastdl`, then reboot apache2 `sudo systemctl restart apache2` or `service restart apache2.service` .
+6.) now we need to configure FTP(vsftpd), navigate to 
 
 
 
