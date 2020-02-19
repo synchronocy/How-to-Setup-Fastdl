@@ -154,7 +154,7 @@ userlist_deny=NO
 ```
 7.) You'll want to go create this file `/etc/vsftpd.userlist` which will contain JUST the username for the user you'll login as to upload your files. Restart vsftpd `sudo systemctl restart vsftpd` or `service restart vsftpd.service`. then use your GUI or cli tool of choice to connect to the ftp server, upload your files that you want to be on your fastdl server. Once you're done uploading we can move onto the next step.
 
-8.) Your addons will contain certain folders like
+8.) Your addons will contain certain folders you're going to want to copy these folders `models/, materials/, sounds/ and resource/`, see script attached in this GitHub repo to automate this, be sure to adjust the script to your settings. 
 ```
 ADDON_Name/
 -> lua/
@@ -163,7 +163,6 @@ ADDON_Name/
 -> resource/
 -> models/
 ```
-you're going to want to copy these folders `models/, materials/, sounds/ and resource/`, see script attached in this GitHub repo to automate this, be sure to adjust the script to your settings.
 
 9) Open up your Garry's Mod folder and navigate to the `garrysmod/cfg/` directory, here you'll want to edit this file `server.cfg`. You'll see the line `sv_downloadurl ""` if you do not then add the line yourself, set this value`sv_downloadurl http://yourwebserverhere/`.
 
