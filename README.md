@@ -172,8 +172,9 @@ ADDON_Name/
 
 if (SERVER) then
   -- EXAMPLE
-  -- resource.AddFile("maps/gm_construct.bsp") -- Uncompressed
+  resource.AddFile("maps/gm_construct.bsp") -- Uncompressed
   -- resource.AddFIle("maps/gm_construct.bsp.bz2") -- Compressed ( smaller filesize )
+end
 ```
 ![Filesize](https://i.imgur.com/MVedelQ.png)
 
