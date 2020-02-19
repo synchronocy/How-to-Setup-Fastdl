@@ -5,25 +5,25 @@
 
 ## Introduction
 
-This document should give you a general concept on how `FastDL` works and any bugs you may encounter along side other underlying child 'content-pushers'. Just to save time for everyone digging to the ends of the internet tubes everything you need will be neatly organised here.
+This document should give you a general concept on how `FastDL` works and any bugs you may encounter alongside other child 'content-pushers'. Just to save time for everyone digging to the ends of the internet tubes everything you need will be neatly organized here.
 
-I've decided to write a general guide on how to setup `FastDL` for Garry's Mod since not many resources give any guidelines or information on how it is setup or ran. Due to other servers within the Oceanic region of the world dabbling in smoke and daggers in regards to information for it. From what I have seen it is more often than not 'flexing' on other smaller communities or individuals in order to 'trample' other servers in certain categories of the server ranking list.
+I've decided to write a general guide on how to setup `FastDL` for Garry's Mod since not many resources give any guidelines or information on how it is setup or run. Due to other servers within the Oceanic region of the world dabbling in smoke and daggers in regards to information for it. From what I have seen it is more often than not 'flexing' on other smaller communities or individuals to 'trample' other servers in certain categories of the server ranking list.
 
 A lot of documentation for it is usually shrouded by WorkshopDL hence why it may be hard to find documentation on this.
 
 
 ## FastDL vs. WorkshopDL / ServerDL
 
-### General concept ahead this is purely me regurgitating information. Some of this may be incorrect but putting experience to text.
+### General concept ahead this is purely me regurgitating information. Some of this may be incorrect but putting experience to the text.
 
 
 #### ServerDL
 
-- ServerDL is enabled by default with this method of pushing content to the clients it DIRECTLY downloads content from the server within garrysmod if you hadn't already setup any external way to push content to the client. By default the download limit is capped in Garrysmod at 20 kilobits per second. (20kbps)
+- ServerDL is enabled by default with this method of pushing content to the clients it DIRECTLY downloads content from the server within garrysmod if you hadn't already setup any external way to push content to the client. By default, the download limit is capped in Garrysmod at 20 kilobits per second. (20kbps)
 
 #### WorkshopDL
 
-- WorkshopDL is typically combined with a workshop collection then accommodated with the commandline parameter +host_workshop_collection xxxxxx. This is using Valve's own CDN to push content to your clients via the workshop if they hadn't already subscribed to your content pack or your individual addons.
+- WorkshopDL is typically combined with a workshop collection then accommodated with the command line parameter +host_workshop_collection xxxxxx. This is using Valve's own CDN to push content to your clients via the workshop if they hadn't already subscribed to your content pack or your individual addons.
 
 - WorkshopDL is configured by setting a file up located somewhere in autorun - typically in (lua/autorun/server), you would gather all of your workshop addon ID's and use the function `resource.AddWorkshop("xxxxxxx")`https://wiki.garrysmod.com/page/resource/AddWorkshop
 
@@ -39,21 +39,21 @@ if (SERVER) then
 end
 ```
 
-- Unforunately I haven't tested the exact speed of WorkshopDL but I definitely know that it's much slower than FastDL. I suspect it's under the same threshold as ServerDL(20kbps). 
+- Unfortunately, I haven't tested the exact speed of WorkshopDL but I definitely know that it's much slower than FastDL. I suspect it's under the same threshold as ServerDL(20kbps). 
 
 
 
 #### FastDL
 
-- FastDL utilizes the HTTP protocol to push content to the clients externally using your own service(webhost), hence by using your own service there are no restrictions placed upon the client's transfer(download) rates instead of the 20kbps and if there are any restrictions it would be on your service - an average user would NOT exceed this restriction.
+- FastDL utilizes the HTTP protocol to push content to the clients externally using your own service(web host), hence by using your own service there are no restrictions placed upon the client's transfer(download) rates instead of the 20kbps and if there are any restrictions it would be on your service - an average user would NOT exceed this restriction.
 
-- FastDL can also support compressed files in the format bz2(Bzip2). Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows–Wheeler algorithm which significantly reduces file sizes; for comparison, A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times due to the download of the map. We take the same map file but compress it using bzip2, it almost halves the size of the map (16 MegaBytes) effectively 'halfing' loading times and quota you'll use pushing content.
+- FastDL can also support compressed files in the format bz2(Bzip2). Garry's mod just also happens to be able to open, read and decompile bzip2 files, BZ2(bzip2) files are compressed using either 7zip or another program - Eitherway bz2 utilizes the Burrows-Wheeler algorithm which significantly reduces file sizes; for comparison, A map file (32 MegaBytes) has to be downloaded upon joining, simply put increasing loading times due to the download of the map. We take the same map file but compress it using bzip2, it almost halves the size of the map (16 MegaBytes) effectively 'halving' loading times and quota you'll use pushing content.
 
-- Knowing this information about compression, quota usage and other parent 'content-pushers' we can take that information and also advise ourselves on the possiblities that you could run into.
+- Knowing this information about compression, quota usage, and other parent 'content-pushers' we can take that information and also advise ourselves on the possibilities that you could run into.
 
-  - Bandwidth ( quota ) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per gb of usage )
+  - Bandwidth ( quota ) costs may incur if you have a very popular server hence serving content to hundreds of users ( typical web server hosts allow around 500gb/1tb of quota before you start paying per GB of usage )
   
-  - Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at **YOUR** expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx,apache, lighttpd, etc), You'll see the referring header or user-agent i've forgotten which is inside the log file, the format should go something along these lines `[HH:MM:SS:] some.other.ip.address, Valve/Steam HTTP Client 1.0 (4000), hl2://your.server.ip.address` you can deny anyone with a mismatching referer/useragent header which effectively kills almost everyone attempting to use your fastdl server.
+  - Stealing FastDL Content - it's something that you WILL need to counter otherwise other people can use your fastdl server at **YOUR** expense, if you have access to your webserver's SSH terminal you can check your webserver package's logs(nginx, apache, Lighttpd, etc), You'll see the referring header or user-agent I've forgotten which is inside the log file, the format should go something along these lines `[HH:MM:SS:] some.other.ip.address, Valve/Steam HTTP Client 1.0 (4000), hl2://your.server.ip.address` you can deny anyone with a mismatching referer/user-agent header which effectively kills almost everyone attempting to use your fastdl server.
   
  
 
@@ -131,24 +131,57 @@ First steps, you'll need to get a webhost with decent bandwidth( quota ), I heav
 
 6.) Now we need to configure FTP(vsftpd), edit the following file using this command `nano /etc/vsftpd.conf`, add the following lines to your config file
 ```
-listen=NO
-listen_ipv6=YES
+listen=YES
+listen_ipv6=NO
+connect_from_port_20=YES
+ 
 anonymous_enable=NO
 local_enable=YES
 write_enable=YES
-local_umask=022
+chroot_local_user=YES
+allow_writeable_chroot=YES
+secure_chroot_dir=/var/run/vsftpd/empty
+ 
+pam_service_name=vsftpd
+ 
+pasv_enable=YES
+pasv_min_port=40000
+pasv_max_port=45000
+ 
+userlist_enable=YES
+userlist_file=/etc/vsftpd.userlist
+userlist_deny=NO
 ```
-7.) Restart vsftpd `sudo systemctl restart vsftpd` or `service restart vsftpd.service`. then use your GUI or cli tool of choice to connect to the ftp server, upload your files that you want to be on your fastdl server. Once you're done uploading we can move onto the next step.
+7.) You'll want to go create this file `/etc/vsftpd.userlist` which will contain JUST the username for the user you'll login as to upload your files. Restart vsftpd `sudo systemctl restart vsftpd` or `service restart vsftpd.service`. then use your GUI or cli tool of choice to connect to the ftp server, upload your files that you want to be on your fastdl server. Once you're done uploading we can move onto the next step.
 
-8.) 
+8.) Your addons will contain certain folders like
+```
+ADDON_Name/
+-> lua/
+-> materials/
+-> sounds/
+-> resource/
+-> models/
+```
+you're going to want to copy these folders `models/, materials/, sounds/ and resource/`, see script attached in this GitHub repo to automate this, be sure to adjust the script to your settings.
+
+9) Open up your Garry's Mod folder and navigate to the `garrysmod/cfg/` directory, here you'll want to edit this file `server.cfg`. You'll see the line `sv_downloadurl ""` if you do not then add the line yourself, set this value`sv_downloadurl http://yourwebserverhere/`.
+
+10.) You'll need to configure what the clients will download for example the maps are the most common thing to download upon joining a server. See the script attached to automate this process, but if you want to manually add something use this format.
+```
+-- garrysmod/lua/autorun/server/fastdl.lua
+
+if (SERVER) then
+  -- EXAMPLE
+  -- resource.AddFile("maps/gm_construct.bsp") -- Uncompressed
+  -- resource.AddFIle("maps/gm_construct.bsp.bz2") -- Compressed ( smaller filesize )
+```
+![Filesize](https://i.imgur.com/MVedelQ.png)
+
+_CONSTRUCTION PAST HERE_
 
 
-- _CONSTRUCTION PAST HERE_
-
-
-
-
-## Acknowledgements
+## Acknowledgements / Resources
 
 #### Crident(.dot)net
 
@@ -158,4 +191,6 @@ Using their blog page in my endevour helped to understand some ways to push cont
 
 Providing their wiki to the WWW, their documentation is a little outdated :/
 
+#### linuxmint(.dot)com
 
+Providing a easy to read config for vsftpd
